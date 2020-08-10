@@ -56,9 +56,7 @@ class Api implements ApiInterface {
             if ($order->getState() == \Magento\Sales\Model\Order::STATE_PENDING_PAYMENT) {
                 if ($query = $this->queryByToken($token)) {
                     if ($query['result'] == 1) {
-                        $order->addStatusHistoryComment('Payment received -> OrderId: ' . $order_id . ' Amount: ' . $query['amount']);
-                        $order->setState(Order::STATE_PROCESSING)->setStatus(Order::STATE_PROCESSING);
-                        $order->save();
+                        $order->addStatusHistoryComment('Payment received -> OrderId: ' . $order_id . ' Amount: ' . $query['amount'])->save();
 
                         if ($this->verifyPayment($query, $order, $_REQUEST)) {
                             $this->processOrder($order);
@@ -84,7 +82,8 @@ class Api implements ApiInterface {
 
         $fields = array(
             'redirect-url' => $this->urlBuilder->getUrl() . 'rest/V1/expresspay/return',
-            'post-url' => $this->urlBuilder->getUrl() . 'rest/V1/expresspay/webhook',
+            // 'post-url' => $this->urlBuilder->getUrl() . 'rest/V1/expresspay/webhook',
+            'post-url' => 'https://aczipz7lf5.sharedwithexpose.com/rest/V1/expresspay/webhook',
 
             'firstname' => $order->getData('customer_firstname'),
             'lastname' => $order->getData('customer_lastname'),
@@ -97,7 +96,7 @@ class Api implements ApiInterface {
 
         if ($token = $this->getCheckoutToken($fields)) {
             $order->getPayment()->setAdditionalInformation('expresspay_token', $token['token'])->save();
-            $order->setStatus(\Magento\Sales\Model\Order::STATE_PENDING_PAYMENT)->setState(\Magento\Sales\Model\Order::STATE_PENDING_PAYMENT)->save();
+            $order->setState(\Magento\Sales\Model\Order::STATE_PENDING_PAYMENT)->save();
 
             $url = $this->buildExpressPayApiUrl('checkout.php', ['token' => $token['token']]);
             $this->redirectExternal($url);
