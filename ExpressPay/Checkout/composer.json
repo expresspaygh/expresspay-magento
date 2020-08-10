@@ -1,0 +1,25 @@
+{
+    "name": "bitpay/module-bpcheckout",
+    "description": "",
+    "type": "magento2-module",
+    "license": "mit",
+    "version":"3.14.2002",
+    "authors": [
+        {
+            "email": "integrations@bitpay.com",
+            "name": "BitPay"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "~5.5.0|~5.6.0|~7.0.0|~7.1.0|~7.2.0"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Bitpay\\BPCheckout\\": ""
+        }
+    }
+}

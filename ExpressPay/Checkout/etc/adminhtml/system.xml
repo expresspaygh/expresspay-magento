@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="payment">
+            <group id="expresspay_checkout" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>ExpressPay</label>
+                <comment>
+                    <![CDATA[
+                        <div style="background-color:#000;padding:10px 20px;border-radius:10px;color:#ffffff">
+                            <table width="100%">
+                                <tr>
+                                    <td style="padding:0;"><a href="https://expresspaygh.com" target="_blank"><img src="https://expresspaygh.com/images/logo.png" style = "vertical-align:middle;" alt="ExpressPay" height="36" /></a></td>
+                                    <td style="padding:0;vertical-align:middle;width:40%">
+                                        <table width="100%">
+                                            <tr>
+                                                <td style="padding:0"><a href="https://expresspaygh.com/faqs.php" target="_blank">Support</a></td>
+                                                <td style="padding:0"><a href="https://expresspaygh.com/signup.php" target="_blank">Sign Up</a></td>
+                                                <td style="padding:0"><a href="https://expresspaygh.com/accounts.php" target="_blank">Login</a></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    ]]>
+                </comment>
+
+                <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="title" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Title</label>
+                </field>
+
+                <field id="merchant_id" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Merchant ID</label>
+                </field>
+
+                <field id="api_key" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>API Key</label>
+                </field>
+
+                <field id="environment" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Environment</label>
+                    <comment><![CDATA[Select <b>Sandbox</b> for testing, and <b>Live</b> for production.]]></comment>
+                    <source_model>ExpressPay\Checkout\Model\Config\Source\Environment</source_model>
+                </field> 
+                
+                <field id="specificcountry" translate="label" type="multiselect" sortOrder="41" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Supported Countries</label>
+                    <source_model>ExpressPay\Checkout\Model\Config\Source\Countries</source_model>
+                    <can_be_empty>0</can_be_empty>
+                </field>
+
+                <field id="sort_order" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Sort Order</label>
+                    <frontend_class>validate-number</frontend_class>
+                </field>
+            </group>
+            <!-- payment-group -->
+        </section>
+    </system>
+</config>
