@@ -1,2 +1,2 @@
 # expresspay-magento
-Magento2 payment extension for expressPay GH
+expressPay payment plugin for Magento 2
