@@ -82,8 +82,7 @@ class Api implements ApiInterface {
 
         $fields = array(
             'redirect-url' => $this->urlBuilder->getUrl() . 'rest/V1/expresspay/return',
-            // 'post-url' => $this->urlBuilder->getUrl() . 'rest/V1/expresspay/webhook',
-            'post-url' => 'https://aczipz7lf5.sharedwithexpose.com/rest/V1/expresspay/webhook',
+            'post-url' => $this->urlBuilder->getUrl() . 'rest/V1/expresspay/webhook',
 
             'firstname' => $order->getData('customer_firstname'),
             'lastname' => $order->getData('customer_lastname'),
