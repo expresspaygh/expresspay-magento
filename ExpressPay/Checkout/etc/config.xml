@@ -5,7 +5,6 @@
             <expresspay_checkout>
                 <active>1</active>
                 <title>ExpressPay</title>
-                <order_status>pending_payment</order_status>
                 <instructions>Instruction.</instructions>
                 <payment_action>true</payment_action>
                 <model>ExpressPay\Checkout\Model\Checkout</model>
